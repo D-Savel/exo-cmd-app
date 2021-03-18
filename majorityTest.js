@@ -1,1 +1,1 @@
-constant ReadlineSync
+constant readlineSync
