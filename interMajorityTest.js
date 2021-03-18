@@ -4,6 +4,16 @@ let isRightInput = true
 let input = ''
 let inputTable = []
 
+if (process.argv.length !== 3) {
+  console.log('usage (doit contenir un argument): node InterMajorityTest.js Age_de_majorite')
+  process.exit(1)
+}
+if (isNaN(process.argv[2])) {
+  console.log("l'argument Age_de_majorite doit être un nombre")
+  process.exit(1)
+}
+let majorityAge = process.argv[2]
+
 do {
   input = readlineSync.question('Entrez votre nom, prénom et votre age (Format de saisie :  Nom,Prénom,Age) :')
   let nbcomma = 0
@@ -32,5 +42,5 @@ do {
 
 let [name, surname, age] = inputTable
 console.log(age)
-age < 18 ? console.log(chalk.red(`Désolé, ${name} ${surname} vous êtes mineur, vous ne pouvez pas voter`))
+age < majorityAge ? console.log(chalk.red(`Désolé, ${name} ${surname} vous êtes mineur, vous ne pouvez pas voter`))
   : console.log(chalk.green(`${name} ${surname} vous êtes majeur, vous pouvez voter`))

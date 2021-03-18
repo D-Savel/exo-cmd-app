@@ -3,14 +3,24 @@ const pyramid = (nbCharBase, char) => {
     console.log(char.repeat(index))
   }
 }
+const reversePyramid = (nbCharBase, char) => {
+  for (let index = nbCharBase; index > 0; index--) {
+    console.log(char.repeat(index))
+  }
+}
 
-if (process.argv.length !== 4) {
-  console.log('usage (invalid number argument): node pyramide.js nbCharBasePyramid charForDrawPyramid')
+if (process.argv.length > 5 || process.argv.length < 3) {
+  console.log("usage (invalid number argument): node pyramide.js nbCharBasePyramid charForDrawPyramid option: -r")
   process.exit(1)
 }
 
 if (isNaN(process.argv[2])) {
   console.log(`invalid argument: The arg 1(nbCharBasePyramid) = ${process.argv[2]} is not a number`)
+  process.exit(1)
+}
+
+if (process.argv.length === 5 && process.argv[4] !== '-r') {
+  console.log("invalid argument: The arg 3 must be equal -r")
   process.exit(1)
 }
 
@@ -22,4 +32,7 @@ if (process.argv[3].length > 1) {
 let nbCharBase = Number(process.argv[2])
 let char = process.argv[3]
 
-pyramid(nbCharBase, char)
+if (process.argv[4] === '-r')
+  reversePyramid(nbCharBase, char)
+else
+  pyramid(nbCharBase, char)
