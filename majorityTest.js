@@ -5,7 +5,7 @@ let input = ''
 let inputTable = []
 
 do {
-  input = readlineSync.question('Entrez votre nom, prénom et votre age (Format de saisie :  Nom,Prénom,Age) :')
+  input = readlineSync.question('Entrez votre prénom, nom et votre age (Format de saisie :  Nom,Prénom,Age) :')
   let nbcomma = 0
 
   for (let index = 0; index < input.length; index++) {
@@ -16,6 +16,7 @@ do {
     console.log("Entrée invalide : Les valeurs saisies doivent être séparée d'une virgule (Nom,Prénom,Age)")
     isRightInput = false
   }
+
   inputTable = input.split(',')
 
   if (!isNaN(inputTable[0]) || !isNaN(inputTable[1])) {
@@ -31,6 +32,5 @@ do {
 } while (!isRightInput)
 
 let [name, surname, age] = inputTable
-console.log(age)
 age < 18 ? console.log(chalk.red(`Désolé, ${name} ${surname} vous êtes mineur, vous ne pouvez pas voter`))
   : console.log(chalk.green(`${name} ${surname} vous êtes majeur, vous pouvez voter`))

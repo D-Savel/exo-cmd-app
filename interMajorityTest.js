@@ -15,7 +15,7 @@ if (isNaN(process.argv[2])) {
 let majorityAge = process.argv[2]
 
 do {
-  input = readlineSync.question('Entrez votre nom, prénom et votre age (Format de saisie :  Nom,Prénom,Age) :')
+  input = readlineSync.question('Entrez votre prénom, nom et votre age (Format de saisie :  Nom,Prénom,Age) :')
   let nbcomma = 0
 
   for (let index = 0; index < input.length; index++) {
@@ -41,6 +41,5 @@ do {
 } while (!isRightInput)
 
 let [name, surname, age] = inputTable
-console.log(age)
 age < majorityAge ? console.log(chalk.red(`Désolé, ${name} ${surname} vous êtes mineur, vous ne pouvez pas voter`))
   : console.log(chalk.green(`${name} ${surname} vous êtes majeur, vous pouvez voter`))
